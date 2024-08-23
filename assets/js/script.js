@@ -39,3 +39,26 @@ function displayCurrentWeather(data) {
         <p>Humidity: ${humidity}%</p>
     `;
 }
+// Function to display 5-day forecast
+function displayForecast(data) {
+    forecastData.innerHTML = '';
+    for (let i = 0; i < data.list.length; i += 8) {
+        const forecast = data.list[i];
+        const date = new Date(forecast.dt_txt).toLocaleDateString();
+        const weather = forecast.weather[0];
+        const temp = forecast.main.temp;
+        const windSpeed = forecast.wind.speed;
+        const humidity = forecast.main.humidity;
+
+        const forecastCard = document.createElement('div');
+        forecastCard.classList.add('weather-card');
+        forecastCard.innerHTML = `
+            <h4>${date}</h4>
+            <img src="http://openweathermap.org/img/w/${weather.icon}.png" alt="${weather.description}">
+            <p>Temp: ${temp} °C</p>
+            <p>Wind: ${windSpeed} m/s</p>
+            <p>Humidity: ${humidity}%</p>
+        `;
+        forecastData.appendChild(forecastCard);
+    }
+}
