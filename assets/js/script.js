@@ -11,7 +11,7 @@ updateHistoryList();
 
 // Function to fetch weather data from OpenWeather API
 function getWeatherData(city) {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
 
     fetch(apiUrl)
         .then(response => response.json())
@@ -61,4 +61,39 @@ function displayForecast(data) {
         `;
         forecastData.appendChild(forecastCard);
     }
+}
+
+// Function to save city to history and update localStorage
+function saveToHistory(city) {
+    if (!searchHistory.includes(city)) {
+        searchHistory.push(city);
+        localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+        updateHistoryList();
+    }
+}
+
+// Function to update search history list
+function updateHistoryList() {
+    historyList.innerHTML = '';
+    searchHistory.forEach(city => {
+        const historyItem = document.createElement('li');
+        historyItem.textContent = city;
+        historyItem.addEventListener('click', () => getWeatherData(city));
+        historyList.appendChild(historyItem);
+    });
+}
+
+// Event listener for the search form
+searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const city = cityInput.value.trim();
+    if (city) {
+        getWeatherData(city);
+        cityInput.value = '';
+    }
+});
+
+// Load the first city in history (if available) on page load
+if (searchHistory.length > 0) {
+    getWeatherData(searchHistory[0]);
 }
