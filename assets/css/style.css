@@ -18,3 +18,49 @@ body {
 h1, h2 {
     text-align: center;
 }
+
+.weather-section {
+    margin-top: 20px;
+}
+
+.weather-card {
+    background-color: #e0f7fa;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    margin: 5px;
+}
+
+.weather-card img {
+    width: 50px;
+}
+
+
+.weather-card {
+    background-color: #e0f7fa;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    margin: 5px;
+}
+
+.weather-card img {
+    width: 50px;
+}
+
+#forecastData {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+#historyList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#historyList li {
+    cursor: pointer;
+    color: blue;
+    margin: 5px 0;
+}
