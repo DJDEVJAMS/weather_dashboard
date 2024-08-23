@@ -42,7 +42,7 @@ Alternatively, you can view the deployed application [here](https://djdevjams.gi
 
 ## Screenshots
 
-![Weather Dashboard Screenshot](./assets/images/screenshot.png)
+![Weather Dashboard Screenshot](./assets/images/screen.png)
 
 ## Technologies Used
 
@@ -52,3 +52,4 @@ Alternatively, you can view the deployed application [here](https://djdevjams.gi
 - **LocalStorage**: To store the search history so that it persists across page reloads.
 
 ## License
+None
